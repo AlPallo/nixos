@@ -1,9 +1,4 @@
-{ config, lib, pkgs, ... }:
-let
-  dotfiles =
-    builtins.fetchGit { name = "https://github.com/AlPallo/dotfiles.git"; };
-  dotfilesDir = "${config.home.homeDirectory}/dotfiles";
-in {
+{ config, lib, pkgs, dotfilesDir, ... }: {
   home = {
     packages = with pkgs; [
       pkgs.wget
@@ -17,12 +12,13 @@ in {
       pkgs.unzip
       pkgs.nodejs_24
       pkgs.tmux
+      pkgs.nil
     ];
-
-    sessionVariables = { EDITOR = "nvim"; };
 
     username = "alex";
     homeDirectory = "/home/alex";
+
+    sessionVariables.EDITOR = "nvim";
 
     file = {
       ".config/nvim".source =
@@ -32,6 +28,9 @@ in {
       ".config/fish/config.fish".source =
         config.lib.file.mkOutOfStoreSymlink "${dotfilesDir}/fish/config.fish";
       ".config/fish/config.fish".force = true;
+      ".config/fish/functions/fish_prompt.fish".source =
+        config.lib.file.mkOutOfStoreSymlink
+        "${dotfilesDir}/fish/functions/fish_prompt.fish";
     };
 
     # You do not need to change this if you're reading this in the future.
