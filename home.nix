@@ -19,6 +19,8 @@ in {
       pkgs.tmux
     ];
 
+    sessionVariables = { EDITOR = "nvim"; };
+
     username = "alex";
     homeDirectory = "/home/alex";
 
