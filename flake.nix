@@ -24,9 +24,7 @@
           modules = [
             ./home.nix
             ({ pkgs, ... }: {
-              home.packages = [
-                rust-flake.packages.${system}.default
-              ];
+              home.packages = [ rust-flake.packages.${system}.default ];
             })
           ];
         };

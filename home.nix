@@ -12,9 +12,10 @@ in
     pkgs.python313
     pkgs.home-manager
     pkgs.gnumake
-    pkgs.libgcc
+    pkgs.gcc
     pkgs.unzip
     pkgs.nodejs_24
+    pkgs.tmux
     ];
 
     username = "alex";
@@ -51,9 +52,6 @@ in
     mason-nvim
     mason-lspconfig-nvim
   ];
-    };
-    tmux = {
-      enable = true;
     };
   };
 }
