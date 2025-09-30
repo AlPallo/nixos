@@ -30,7 +30,7 @@
       ".config/fish/config.fish".force = true;
       ".config/fish/functions/fish_prompt.fish".source =
         config.lib.file.mkOutOfStoreSymlink
-        "${dotfilesDir}/fish/functions/fish_prompt.fish";
+        "${dotfilesDir}/fish/fish_prompt.fish";
     };
 
     # You do not need to change this if you're reading this in the future.
